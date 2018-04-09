@@ -51,7 +51,7 @@ class ServerThread extends Thread{
 	}
 	
 	private void failResponse(PrintWriter out) {
-		String notFound = "<html><title>Not Found</title></head><body><h1>Error 404-file not found</h1></body></html>";
+		String notFound = "<html><head><title>Not Found</title></head><body><h1>Error 404-file not found</h1></body></html>";
 		out.print("HTTP/1.0 404 Not Found");
 		out.println("Content_Type:text/html");
 		out.println("Content_Length:" + notFound.length() + 2);
