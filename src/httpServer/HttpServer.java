@@ -73,7 +73,7 @@ class ServerThread extends Thread{
 			if (url.length() > 0) {
 				if (url.substring(0,3).equalsIgnoreCase("GET")) {
 					String fileName = getFileName(url);
-					File file = new File(fileName);
+					File file = new File("webapp/" + fileName);
 					if (file.exists()) {
 						successResponse(fileName, file, out);
 						fileToBrowser(raw_out, file);
@@ -83,17 +83,29 @@ class ServerThread extends Thread{
 					}
 				}
 			}
-			String message;
-			while((message = in.readLine()) != null){
-				System.out.println("Receiving " + message);
-			}
+			
+			Runnable r = new Runnable() {
+				public void run() {
+					String message;
+					try {
+						while((message = in.readLine()) != null){
+							System.out.println("Receiving " + message);
+						}
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			};
+			new Thread(r).start();
+			
+
 		} catch( EOFException ie ) {
 			
 		} catch( IOException ie) {
 			ie.printStackTrace();
 		}finally {
-			removeConnection(client);
-			System.out.println("Finish connection");
+			//removeConnection(client);
+			//System.out.println("Finish connection");
 		}
 	}
 	
