@@ -84,7 +84,7 @@ class ServerThread extends Thread{
 				}
 			}
 			
-			Runnable r = new Runnable() {
+			new Thread() {
 				public void run() {
 					String message;
 					try {
@@ -95,8 +95,7 @@ class ServerThread extends Thread{
 						e.printStackTrace();
 					}
 				}
-			};
-			new Thread(r).start();
+			}.start();
 			
 
 		} catch( EOFException ie ) {

@@ -55,7 +55,7 @@ public class chatServer {
 		ss = new ServerSocket(port);
 		System.out.println("Listening on port: "+ ss);			
 
-		Runnable r = new Runnable() {
+		new Thread() {
 			public void run() {
 				String userInput;
 				try(
@@ -75,8 +75,7 @@ public class chatServer {
 				}
 
 			}
-		};
-		new Thread(r).start();
+		}.start();
 		
 		while(true) {
 			s = ss.accept();
