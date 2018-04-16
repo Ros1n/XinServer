@@ -1,3 +1,8 @@
-# multiple_chat_server  
-
-## A simple practice of multiple chat-server communication system.
+# XinServer	
+Some basic server implementations in Java.  
+## Multiple User Chat Server Application.  
+Allowing multiple clients contact with a server at same time.  
+## HttpServer
+Implemented a basic HttpServer that can parse and read the HTTP requests from browsers or clients, check the resources in webapp path, and return the resources and response.  
+## XinServer  
+A simple version of HttpServer that can handle complex HTTP requests and responses.
